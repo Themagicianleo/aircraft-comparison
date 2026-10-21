@@ -209,13 +209,112 @@ function renderCharts(planeA, planeB) {
   }
 }
 
-// ---------- 5. Wiring it together ----------
+// ---------- 5. Derived metrics ----------
+
+// 1 kg/m² expressed in lb/ft² (pounds per square foot, common in US aviation books).
+const KG_M2_TO_LB_FT2 = KG_TO_LB / (M_TO_FT * M_TO_FT);
+
+// Each metric knows its formula and how to calculate itself from one aircraft's specs.
+// "inputs" lists which specs it uses, so we can warn if any of them is unverified.
+const METRICS = [
+  {
+    name: 'Aspect ratio',
+    formula: 'aspect ratio = wingspan² ÷ wing area',
+    inputs: ['wingspan', 'wingArea'],
+    calculate: (s) => (s.wingspan.value ** 2) / s.wingArea.value,
+    // The worked sum, e.g. "64.80² ÷ 436.8 = 9.61"
+    working: (s, result) =>
+      `${formatNumber(s.wingspan.value, 2)}² ÷ ${formatNumber(s.wingArea.value, 1)} = ${formatNumber(result, 2)}`,
+    format: (result) => formatNumber(result, 2) + ' (no unit)',
+  },
+  {
+    name: 'Wing loading (at MTOW)',
+    formula: 'wing loading = MTOW ÷ wing area',
+    inputs: ['mtow', 'wingArea'],
+    calculate: (s) => s.mtow.value / s.wingArea.value,
+    working: (s, result) =>
+      `${formatNumber(s.mtow.value)} kg ÷ ${formatNumber(s.wingArea.value, 1)} m² = ${formatNumber(result)} kg/m²`,
+    format: (result) => `${formatNumber(result)} kg/m² (${formatNumber(result * KG_M2_TO_LB_FT2)} lb/ft²)`,
+  },
+];
+
+// Builds the result for one aircraft inside a metric card.
+function buildMetricResult(metric, plane, sideClass) {
+  const box = document.createElement('div');
+  box.className = `metric-result ${sideClass}`;
+
+  const name = document.createElement('div');
+  name.className = 'metric-plane';
+  name.textContent = plane.name;
+  box.appendChild(name);
+
+  // If any input is missing, we can't calculate anything honest
+  const missing = metric.inputs.some((key) => plane.specs[key].value === null);
+  if (missing) {
+    box.appendChild(document.createTextNode('— (an input value is missing)'));
+    return box;
+  }
+
+  const result = metric.calculate(plane.specs);
+
+  const value = document.createElement('div');
+  value.className = 'metric-value';
+  value.textContent = metric.format(result);
+  box.appendChild(value);
+
+  const working = document.createElement('div');
+  working.className = 'meta';
+  working.textContent = metric.working(plane.specs, result);
+  box.appendChild(working);
+
+  // The result is only as good as its inputs
+  const unverified = metric.inputs.some((key) => plane.specs[key].status !== 'verified');
+  if (unverified) {
+    const warn = document.createElement('div');
+    warn.className = 'meta unverified';
+    warn.textContent = '⚠ uses unverified inputs';
+    box.appendChild(warn);
+  }
+  return box;
+}
+
+// Rebuilds all the metric cards for the two chosen aircraft.
+function renderMetrics(planeA, planeB) {
+  const container = document.getElementById('metrics');
+  container.innerHTML = '';
+
+  for (const metric of METRICS) {
+    const card = document.createElement('article');
+    card.className = 'metric-card';
+
+    const title = document.createElement('h3');
+    title.textContent = metric.name;
+    card.appendChild(title);
+
+    // The formula, shown in monospace like code
+    const formula = document.createElement('code');
+    formula.className = 'formula';
+    formula.textContent = metric.formula;
+    card.appendChild(formula);
+
+    const results = document.createElement('div');
+    results.className = 'metric-results';
+    results.appendChild(buildMetricResult(metric, planeA, 'side-a'));
+    results.appendChild(buildMetricResult(metric, planeB, 'side-b'));
+    card.appendChild(results);
+
+    container.appendChild(card);
+  }
+}
+
+// ---------- 6. Wiring it together ----------
 
 // Called whenever either dropdown changes: read both choices, redraw everything.
 function update() {
   const planeA = findAircraft(document.getElementById('select-a').value);
   const planeB = findAircraft(document.getElementById('select-b').value);
   renderTable(planeA, planeB);
+  renderMetrics(planeA, planeB); // before the charts, so it still runs if Chart.js is missing
   renderCharts(planeA, planeB);
 }
 

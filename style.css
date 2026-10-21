@@ -199,3 +199,56 @@ figcaption {
   position: relative;
   height: 220px;
 }
+
+/* ---------- Derived metrics ---------- */
+.metrics {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.metric-card {
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.metric-card h3 {
+  margin: 0 0 8px;
+}
+
+.formula {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.metric-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* aircraft A on the left, B on the right */
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* A coloured line on the left shows which aircraft each result belongs to */
+.metric-result {
+  padding-left: 10px;
+  border-left: 4px solid var(--series-a);
+}
+.metric-result.side-b {
+  border-left-color: var(--series-b);
+}
+
+.metric-plane {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.metric-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
