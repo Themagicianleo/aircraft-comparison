@@ -382,12 +382,24 @@ function update() {
 }
 
 // Puts one <option> per aircraft into a dropdown and pre-selects one.
+// Aircraft are grouped by manufacturer (an <optgroup> is a labelled group inside a dropdown).
 function fillDropdown(select, selectedId) {
-  for (const plane of data.aircraft) {
-    const option = document.createElement('option');
-    option.value = plane.id;          // what the code uses
-    option.textContent = plane.name;  // what the user sees
-    select.appendChild(option);
+  // Sort by name. "numeric: true" makes "787-9" come before "787-10", like a human would sort.
+  const sorted = [...data.aircraft].sort((a, b) =>
+    a.name.localeCompare(b.name, 'en', { numeric: true }));
+
+  // Make one group per manufacturer, e.g. "Airbus", "Boeing"
+  const manufacturers = [...new Set(sorted.map((plane) => plane.manufacturer))];
+  for (const manufacturer of manufacturers) {
+    const group = document.createElement('optgroup');
+    group.label = manufacturer;
+    for (const plane of sorted.filter((p) => p.manufacturer === manufacturer)) {
+      const option = document.createElement('option');
+      option.value = plane.id;          // what the code uses
+      option.textContent = plane.name;  // what the user sees
+      group.appendChild(option);
+    }
+    select.appendChild(group);
   }
   select.value = selectedId;
   select.addEventListener('change', update);
