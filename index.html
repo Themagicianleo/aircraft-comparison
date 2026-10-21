@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page setup: character set and phone-friendly scaling -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airliner Comparison Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Airliner Comparison Tool</h1>
+    <p class="subtitle">Pick two airliners and compare their specifications side by side.</p>
+  </header>
+
+  <main>
+    <!-- Feature 1: the two aircraft pickers. app.js fills in the <option>s from data.json -->
+    <section class="pickers" aria-label="Choose aircraft">
+      <label class="picker picker-a">
+        <span class="picker-label">Aircraft A</span>
+        <select id="select-a"></select>
+      </label>
+      <span class="vs">vs</span>
+      <label class="picker picker-b">
+        <span class="picker-label">Aircraft B</span>
+        <select id="select-b"></select>
+      </label>
+    </section>
+
+    <!-- Shown only if something goes wrong (e.g. data.json can't be loaded) -->
+    <p id="error" class="error" hidden></p>
+
+    <!-- Feature 1: the specs table. app.js builds the rows. -->
+    <section aria-labelledby="specs-heading">
+      <h2 id="specs-heading">Specifications</h2>
+      <p class="hint">⚠ = not yet verified against the primary source. Tap "source" to see where a number came from.</p>
+      <!-- The wrapper lets the table scroll sideways on narrow screens instead of breaking the page -->
+      <div class="table-wrap">
+        <table id="specs-table">
+          <thead>
+            <tr>
+              <th scope="col">Spec</th>
+              <th scope="col" id="head-a">Aircraft A</th>
+              <th scope="col" id="head-b">Aircraft B</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Our own code. "defer" means: run it after the HTML above has been read. -->
+  <script src="app.js" defer></script>
+</body>
+</html>

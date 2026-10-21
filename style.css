@@ -1,0 +1,175 @@
+/* ---------- Colour tokens ----------
+   All colours are defined once here and reused by name.
+   --series-a / --series-b are the two aircraft colours (blue and orange),
+   chosen to stay distinguishable for colour-blind users. */
+:root {
+  --bg: #fcfcfb;
+  --surface: #ffffff;
+  --border: #e2e1dc;
+  --text: #0b0b0b;
+  --text-muted: #52514e;
+  --link: #1f63b4;
+  --warn: #8a5a00;
+  --error-bg: #fdecea;
+  --series-a: #2a78d6;
+  --series-b: #eb6834;
+}
+
+/* Dark mode: same names, darker values. Used when the phone/computer is set to dark mode. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1a19;
+    --surface: #232322;
+    --border: #3a3a38;
+    --text: #f0efec;
+    --text-muted: #c3c2b7;
+    --link: #7fb0f0;
+    --warn: #f0b84a;
+    --error-bg: #4a1f1c;
+    --series-a: #3987e5;
+    --series-b: #d95926;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a19;
+  --surface: #232322;
+  --border: #3a3a38;
+  --text: #f0efec;
+  --text-muted: #c3c2b7;
+  --link: #7fb0f0;
+  --warn: #f0b84a;
+  --error-bg: #4a1f1c;
+  --series-a: #3987e5;
+  --series-b: #d95926;
+}
+
+/* ---------- Page basics ---------- */
+* {
+  box-sizing: border-box; /* widths include padding, which makes layout maths simpler */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+header,
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1 {
+  margin: 24px 0 4px;
+}
+
+.subtitle,
+.hint {
+  color: var(--text-muted);
+  margin-top: 0;
+}
+
+a {
+  color: var(--link);
+}
+
+/* ---------- Dropdowns ---------- */
+.pickers {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* both pickers share the width equally */
+}
+
+.picker-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* A coloured bar on the left of each picker shows that aircraft's chart colour */
+.picker select {
+  font-size: 1rem;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--series-a);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+}
+.picker-b select {
+  border-left-color: var(--series-b);
+}
+
+.vs {
+  padding-bottom: 10px;
+  color: var(--text-muted);
+}
+
+.error {
+  background: var(--error-bg);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* ---------- Specs table ---------- */
+.table-wrap {
+  overflow-x: auto; /* scroll sideways if the table is wider than the screen */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+thead th {
+  font-size: 0.95rem;
+}
+/* Underline each aircraft heading in that aircraft's colour */
+#head-a {
+  border-bottom: 3px solid var(--series-a);
+}
+#head-b {
+  border-bottom: 3px solid var(--series-b);
+}
+
+tbody th {
+  font-weight: 600;
+  width: 28%;
+}
+
+.value {
+  font-variant-numeric: tabular-nums; /* digits line up in columns */
+}
+
+.meta,
+details {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.unverified {
+  color: var(--warn);
+}
+
+summary {
+  cursor: pointer;
+}
