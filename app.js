@@ -34,14 +34,15 @@ function formatValue(value, unit) {
     case 'm²':
       return `${formatNumber(value, 1)} m² (${formatNumber(value * M_TO_FT * M_TO_FT)} ft²)`;
     case 'kg':
+      // (\u00A0 is a non-breaking space: it keeps "≈" on the same line as its number)
       // lb is rounded to the nearest 100: the kg value was itself converted from lb,
       // so showing every digit would give odd results like "559,998 lb"
-      return `${formatNumber(value)} kg (≈ ${formatNumber(Math.round(value * KG_TO_LB / 100) * 100)} lb)`;
+      return `${formatNumber(value)} kg (≈\u00A0${formatNumber(Math.round(value * KG_TO_LB / 100) * 100)} lb)`;
     case 'nmi':
       return `${formatNumber(value)} nmi (${formatNumber(value * NMI_TO_KM)} km)`;
     case 'kN':
       // lbf is rounded to the nearest 100 because the kN figure is itself rounded
-      return `${formatNumber(value)} kN (≈ ${formatNumber(Math.round(value * KN_TO_LBF / 100) * 100)} lbf)`;
+      return `${formatNumber(value)} kN (≈\u00A0${formatNumber(Math.round(value * KN_TO_LBF / 100) * 100)} lbf)`;
     case 'Mach':
       return `Mach ${value}`;
     default:

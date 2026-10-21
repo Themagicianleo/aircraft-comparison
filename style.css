@@ -177,7 +177,7 @@ summary {
 /* ---------- Charts ---------- */
 .charts {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* two charts per row (phones get one per row in feature 5) */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* two equal columns that are allowed to shrink */
   gap: 16px;
 }
 
@@ -271,4 +271,54 @@ figcaption {
 
 .comparison {
   font-weight: 600;
+}
+
+/* ---------- Feature 5: phones and small screens ----------
+   Everything above is the "wide screen" layout. The rules below only apply
+   when the screen is 640px wide or less (most phones held upright). */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  /* Stack the two dropdowns on top of each other */
+  .pickers {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .vs {
+    padding: 0;
+    text-align: center;
+  }
+
+  /* One chart per row instead of two.
+     minmax(0, 1fr) lets a column shrink below the chart's own width, so it can't push the page wider. */
+  .charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .chart-box {
+    height: 200px;
+  }
+
+  /* Tighter table cells so all three columns fit on a phone */
+  th,
+  td {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+  }
+  tbody th {
+    width: auto;
+  }
+
+  /* Put aircraft A's result above aircraft B's */
+  .metric-results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Make sure dropdowns can shrink on narrow screens instead of overflowing */
+.picker select {
+  width: 100%;
+  min-width: 0;
 }
