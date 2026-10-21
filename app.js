@@ -67,7 +67,7 @@ function buildSpecCell(spec, unit) {
   valueEl.textContent = formatValue(spec.value, unit);
   cell.appendChild(valueEl);
 
-  // A small line underneath: "⚠ unverified · source: SKYbrary"
+  // A small line underneath: "⚠ unverified · source: Wikipedia"
   const meta = document.createElement('div');
   meta.className = 'meta';
   if (spec.status !== 'verified') {

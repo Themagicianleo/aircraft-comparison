@@ -54,13 +54,13 @@ Then open <http://localhost:8000> in your browser. The charts need an internet c
 ```json
 "wingspan": {
   "value": 64.8,
-  "source": "skybrary-b77w",
-  "status": "unverified",
-  "note": "SKYbrary gives 64.80 m. Check against Boeing's 777-300ER airport planning document."
+  "source": "wikipedia-777",
+  "status": "verified",
+  "note": "212 ft 7 in (64.80 m), including the raked wingtips."
 }
 ```
 
-`status` is `"verified"` or `"unverified"`. `value` can be `null` if no trustworthy number exists; the page then shows "—".
+`status` is `"verified"` (matches the source) or `"unverified"` (could not be confirmed, so check it yourself). `value` can be `null` if no trustworthy number exists; the page then shows "—".
 
 To **add an aircraft**, copy one entry in `aircraft`, give it a new `id`, fill in every field, and add any new sources to `sources`. You don't need to change any code.
 
@@ -82,37 +82,35 @@ Conversions use exact definitions: 1 ft = 0.3048 m, 1 lb = 0.45359237 kg, 1 nmi 
 
 ## Data sources
 
-Each value's exact source is in `data.json`. Overall:
+All values come from the **Wikipedia** specification tables, accessed 21 October 2026:
 
-- **Boeing:** 777-200LR/-300ER/-Freighter *Airplane Characteristics for Airport Planning* (Rev G, Dec 2024) and the 787 product page
-- **Airbus:** *A350 Family Facts and Figures* (October 2024)
-- **SKYbrary** (EUROCONTROL / Flight Safety Foundation) aircraft performance pages for the B77W, B789 and A359
-- **Airlines:** Lufthansa Group A350 fact sheet, Qantas 787-9 fleet page
-- **Other:** FlightGlobal (777-300ER MTOW), flugzeuginfo.net (787-9 wing area), Wikipedia (777-300ER wing area)
+- [Boeing 777](https://en.wikipedia.org/wiki/Boeing_777#Specifications) (777-300ER)
+- [Boeing 787 Dreamliner](https://en.wikipedia.org/wiki/Boeing_787_Dreamliner#Specifications) (787-9)
+- [Airbus A350](https://en.wikipedia.org/wiki/Airbus_A350#Specifications) (A350-900)
+- [Rolls-Royce Trent XWB](https://en.wikipedia.org/wiki/Rolls-Royce_Trent_XWB) (A350-900 engine thrust)
 
-### ⚠ Verification status: every value is currently "unverified"
+Wikipedia is a secondary source: its numbers come from Boeing and Airbus documents cited at the bottom of each article. For an official figure, follow those citations. Boeing's airport planning documents are listed at <https://www.boeing.com/commercial/airports/plan-manuals>, and Airbus's at its [Aircraft Characteristics page](https://www.aircraft.airbus.com/en/customer-care/fleet-wide-care/airport-operations-and-aircraft-characteristics/aircraft-characteristics).
 
-The data was collected through web search results. The original PDFs and manufacturer pages couldn't be opened directly in the environment where the data was compiled. So every value is honestly marked `unverified`, even though most of them agree across several sources.
+### ⚠ Values to double-check
 
-**To verify a value:** open its source link, find the number, and if it matches, change `"status"` to `"verified"` in `data.json`. If it doesn't match, correct the value and update the `note`.
+The values were read from Wikipedia through search results, because the environment where they were compiled couldn't open Wikipedia directly. Three are still marked `unverified`:
 
-Where to look first, from most to least uncertain:
+1. **787-9 wing area (377 m²).** It couldn't be read directly. It is consistent with the aspect ratio of 9.6 that Wikipedia gives for the 787-9 (60.12² ÷ 377 = 9.59). Other sites quote 325 or 361 m². This number drives both derived metrics for the 787-9.
+2. **787-9 range (7,565 nmi).** Parts of the article give a higher figure, possibly for the new higher-weight version.
+3. **777-300ER cruise speed (Mach 0.84).** Wikipedia's table lists only the maximum speed (Mach 0.89). Mach 0.84 is the design cruise from the article text.
 
-1. **Wing area (all three aircraft).** Sources disagree. For the 787-9 they range from 325 to 377 m², and this field drives both derived metrics. The 777-300ER figure (436.8 m²) comes from Wikipedia, not Boeing.
-2. **777-300ER range.** 7,370 nmi is widely quoted, but SKYbrary says 7,930 nmi and FlightGlobal says 7,705 nmi.
-3. **787-9 engine thrust.** 320 kN (SKYbrary) vs. 74,400 lbf ≈ 331 kN (Lufthansa). It depends on the engine sub-model.
-4. **A350-900 seats.** Airbus gives a range (300–350). The app stores the midpoint, 325, so it can be charted.
+To check one, open its Wikipedia link and find the number. If it matches, change `"status"` to `"verified"` in `data.json`. If it doesn't, correct `"value"` and update the `"note"`.
 
 ## Limitations
 
-- **Unverified data.** See above. Treat the numbers as approximate until each one is checked.
-- **Seat counts aren't directly comparable.** Boeing quotes a two-class layout and Airbus a three-class layout, and real airline cabins vary widely (e.g. a British Airways 787-9 has 216 seats).
+- **Secondary source.** All numbers come from Wikipedia, and three are still unverified (see above).
+- **Seat counts aren't directly comparable.** Each figure is a "typical" layout chosen by the manufacturer, and real airline cabins vary widely (e.g. a British Airways 787-9 has 216 seats).
 - **"Typical range" depends on assumptions.** Payload, reserves and MTOW option all change it, and each manufacturer uses its own assumptions.
-- **MTOW is the highest certified option.** Many aircraft are delivered at lower weights, which also changes range and wing loading.
+- **MTOW is the highest certified option.** For the 787-9 that is the 571,500 lb rating available since December 2025. Many aircraft are delivered at lower weights, which also changes range and wing loading.
 - **Wing area has no single definition.** Reference area vs. gross area can differ by 10% or more, which directly changes aspect ratio and wing loading. This app doesn't adjust for it.
 - **Wingtip devices.** Raked wingtips (777-300ER, 787) and winglets are included in the span but handled differently in published areas.
 - **Aspect ratio and wing loading are simplified.** Real wing performance also depends on sweep, airfoil shape and high-lift devices.
 - **Only one engine option is charted per aircraft.** The 787-9 offers both the GEnx-1B and Trent 1000, and their thrust ratings differ slightly.
 - **Only two aircraft can be compared at a time.**
 - **Charts need internet access**, because Chart.js is loaded from a CDN.
-- **Source links can break.** Websites move their files (Boeing reorganised boeing.com, which broke two of the original links). Each value's "details" box shows the full document name, so you can find it by searching even if the link stops working. Boeing's current airport planning documents are listed at <https://www.boeing.com/commercial/airports/plan-manuals>.
+- **Wikipedia changes over time.** Articles get edited, so a number may differ from what's shown here. Each value's "details" box shows the source and the date it was accessed.

@@ -1,5 +1,5 @@
 {
-  "_readme": "Every spec is an object: value (in the unit listed under 'fields'), source (an id from 'sources'), status ('verified' or 'unverified'), and an optional note. The app reads labels and units from 'fields', so adding a field here does not require changing the table code.",
+  "_readme": "Every spec is an object: value (in the unit listed under 'fields'), source (an id from 'sources'), status ('verified' = matches the source; 'unverified' = could not be confirmed, check it yourself), and an optional note. The app reads labels and units from 'fields', so adding a field here does not require changing the table code.",
 
   "fields": {
     "wingspan":     { "label": "Wingspan",                 "unit": "m" },
@@ -14,70 +14,28 @@
   },
 
   "sources": {
-    "skybrary-b77w": {
-      "title": "Boeing 777-300ER (B77W) aircraft performance page",
-      "publisher": "SKYbrary (EUROCONTROL / Flight Safety Foundation)",
-      "url": "https://skybrary.aero/aircraft/b77w",
-      "accessed": "2026-10-21"
-    },
-    "boeing-777-acaps": {
-      "title": "777-200LR / -300ER / -Freighter Airplane Characteristics for Airport Planning (D6-58329-2, Rev G, Dec 2024)",
-      "publisher": "Boeing",
-      "url": "https://www.boeing.com/content/dam/boeing/v2/airports/acaps/777-200LR-300ER-F_Rev_G.pdf",
-      "accessed": "2026-10-21"
-    },
-    "flightglobal-777-mtow": {
-      "title": "Boeing boosts 777-300ER weight",
-      "publisher": "FlightGlobal",
-      "url": "https://www.flightglobal.com/boeing-boosts-777-300er-weight/51851.article",
-      "accessed": "2026-10-21"
-    },
     "wikipedia-777": {
-      "title": "Boeing 777 (specifications table)",
-      "publisher": "Wikipedia (secondary source - check its citations)",
-      "url": "https://en.wikipedia.org/wiki/Boeing_777",
+      "title": "Boeing 777 (Specifications section, 777-300ER column)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Boeing_777#Specifications",
       "accessed": "2026-10-21"
     },
-    "boeing-787-page": {
-      "title": "787 Dreamliner product page (specifications table)",
-      "publisher": "Boeing",
-      "url": "https://www.boeing.com/commercial/787",
+    "wikipedia-787": {
+      "title": "Boeing 787 Dreamliner (Specifications section, 787-9 column)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Boeing_787_Dreamliner#Specifications",
       "accessed": "2026-10-21"
     },
-    "skybrary-b789": {
-      "title": "Boeing 787-9 (B789) aircraft performance page",
-      "publisher": "SKYbrary (EUROCONTROL / Flight Safety Foundation)",
-      "url": "https://skybrary.aero/aircraft/b789",
+    "wikipedia-a350": {
+      "title": "Airbus A350 (Specifications section, A350-900 column)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A350#Specifications",
       "accessed": "2026-10-21"
     },
-    "qantas-787-9": {
-      "title": "Boeing 787-9 fleet page",
-      "publisher": "Qantas",
-      "url": "https://qantas.com/ar/en/qantas-experience/onboard/seat-maps/boeing-787-9.html",
-      "accessed": "2026-10-21"
-    },
-    "flugzeuginfo-787-9": {
-      "title": "Boeing 787-9 Dreamliner data sheet",
-      "publisher": "flugzeuginfo.net",
-      "url": "https://www.flugzeuginfo.net/acdata_php/acdata_boeing_7879_en.php",
-      "accessed": "2026-10-21"
-    },
-    "airbus-a350-facts-2024": {
-      "title": "Airbus A350 Family Facts and Figures, October 2024",
-      "publisher": "Airbus",
-      "url": "https://www.airbus.com/sites/g/files/jlcbta136/files/2024-10/Airbus-A350-Family-Facts-and-Figures-October-2024.pdf",
-      "accessed": "2026-10-21"
-    },
-    "lufthansa-a350-facts": {
-      "title": "A350 Facts and Figures",
-      "publisher": "Lufthansa Group",
-      "url": "https://www.lufthansagroup.com/media/newsroom/north-america/2019/q1/A350_Facts_and_figures_ENG_final.pdf",
-      "accessed": "2026-10-21"
-    },
-    "skybrary-a359": {
-      "title": "Airbus A350-900 (A359) aircraft performance page",
-      "publisher": "SKYbrary (EUROCONTROL / Flight Safety Foundation)",
-      "url": "https://skybrary.aero/aircraft/a359",
+    "wikipedia-trent-xwb": {
+      "title": "Rolls-Royce Trent XWB (Specifications, XWB-84)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Rolls-Royce_Trent_XWB",
       "accessed": "2026-10-21"
     }
   },
@@ -90,55 +48,56 @@
       "specs": {
         "wingspan": {
           "value": 64.8,
-          "source": "skybrary-b77w",
-          "status": "unverified",
-          "note": "SKYbrary gives 64.80 m. A Boeing 777X brochure lists the 777-300ER at 212.8 ft (64.8 m), but that PDF has since been removed from boeing.com. Check against Boeing's 777-300ER airport planning document (Rev G)."
+          "source": "wikipedia-777",
+          "status": "verified",
+          "note": "212 ft 7 in (64.80 m), including the raked wingtips."
         },
         "wingArea": {
           "value": 436.8,
           "source": "wikipedia-777",
-          "status": "unverified",
-          "note": "Commonly cited figure (4,702 sq ft), not confirmed in a Boeing document. flugzeuginfo.net gives 427.8 m², but for the 777-300, which has a shorter wing without raked tips. Check against the Boeing airport planning document."
+          "status": "verified",
+          "note": "4,702 sq ft (436.8 m²)."
         },
         "length": {
-          "value": 73.9,
-          "source": "skybrary-b77w",
-          "status": "unverified",
-          "note": "Commonly published as 242 ft 4 in (73.86 m)."
+          "value": 73.86,
+          "source": "wikipedia-777",
+          "status": "verified",
+          "note": "242 ft 4 in (73.86 m)."
         },
         "mtow": {
-          "value": 351534,
-          "source": "flightglobal-777-mtow",
-          "status": "unverified",
-          "note": "Published as 775,000 lb, converted here (× 0.45359237). SKYbrary gives 351,530 kg. Lower MTOW options also exist."
+          "value": 351535,
+          "source": "wikipedia-777",
+          "status": "verified",
+          "note": "775,000 lb (351,535 kg)."
         },
         "typicalRange": {
           "value": 7370,
-          "source": "boeing-777-acaps",
-          "status": "unverified",
-          "note": "7,370 nmi (13,650 km) is widely quoted as Boeing's figure, but sources disagree: SKYbrary lists 7,930 nmi and FlightGlobal 7,705 nmi. Check the payload/range chart in the Boeing document."
+          "source": "wikipedia-777",
+          "status": "verified",
+          "note": "7,370 nmi (13,650 km)."
         },
         "typicalSeats": {
           "value": 396,
-          "source": "boeing-777-acaps",
-          "status": "unverified",
-          "note": "Two-class layout. Boeing's older marketing figure was 365. Boeing counts two classes and Airbus counts three, so seat numbers are not directly comparable."
+          "source": "wikipedia-777",
+          "status": "verified",
+          "note": "396 in two classes (365 in three classes)."
         },
         "engineModel": {
           "value": "GE90-115B",
-          "source": "skybrary-b77w",
-          "status": "unverified"
+          "source": "wikipedia-777",
+          "status": "verified"
         },
         "engineThrust": {
           "value": 513,
-          "source": "skybrary-b77w",
-          "status": "unverified",
-          "note": "115,300 lbf (≈ 513 kN). SKYbrary rounds to 511 kN. Check the FAA type certificate data sheet for the GE90."
+          "source": "wikipedia-777",
+          "status": "verified",
+          "note": "115,300 lbf (513 kN)."
         },
         "cruiseSpeed": {
           "value": 0.84,
-          "source": "skybrary-b77w",
-          "status": "unverified"
+          "source": "wikipedia-777",
+          "status": "unverified",
+          "note": "Wikipedia says the wing was designed for Mach 0.83, revised to 0.84 after flight tests. Its spec table gives only the maximum speed (Mach 0.89), so 0.84 is the best cruise figure available."
         }
       }
     },
@@ -150,56 +109,56 @@
       "specs": {
         "wingspan": {
           "value": 60.12,
-          "source": "qantas-787-9",
-          "status": "unverified",
-          "note": "197 ft 3 in. Boeing's own page rounds to 60 m; SKYbrary gives 60.10 m."
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "197 ft 3 in (60.12 m)."
         },
         "wingArea": {
-          "value": 361,
-          "source": "flugzeuginfo-787-9",
+          "value": 377,
+          "source": "wikipedia-787",
           "status": "unverified",
-          "note": "Sources disagree a lot: Qantas gives 325 m² and Wikipedia gives 377 m². This value directly changes aspect ratio and wing loading."
+          "note": "377 m² (4,058 sq ft). Could not read this number directly, but Wikipedia's 787-9 diagram gives an aspect ratio of 9.6, and 60.12² ÷ 377 = 9.59, which matches. Other sites quote 325 m² or 361 m²."
         },
         "length": {
           "value": 62.81,
-          "source": "qantas-787-9",
-          "status": "unverified",
-          "note": "206 ft 1 in. Boeing's page rounds to 63 m."
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "206 ft 1 in (62.81 m)."
         },
         "mtow": {
-          "value": 254011,
-          "source": "qantas-787-9",
-          "status": "unverified",
-          "note": "Published as 560,000 lb, converted here (× 0.45359237). SKYbrary gives 253,000 kg."
+          "value": 259228,
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "571,500 lb (259,228 kg), the higher weight rating that 787-9s built since December 2025 can carry. Earlier aircraft were rated at 560,000 lb (254,011 kg)."
         },
         "typicalRange": {
           "value": 7565,
-          "source": "boeing-787-page",
+          "source": "wikipedia-787",
           "status": "unverified",
-          "note": "7,565 nmi (14,010 km) per Boeing's 787 page, read via search results. Other sites give 7,635 nmi."
+          "note": "7,565 nmi (14,010 km) with 296 passengers, from the article text. Parts of the article give a higher figure, possibly for the new higher MTOW, so check the spec table."
         },
         "typicalSeats": {
           "value": 296,
-          "source": "boeing-787-page",
-          "status": "unverified",
-          "note": "Two-class layout. Older Boeing material said 290."
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "Typical two-class layout."
         },
         "engineModel": {
           "value": "GEnx-1B or Trent 1000",
-          "source": "skybrary-b789",
-          "status": "unverified",
+          "source": "wikipedia-787",
+          "status": "verified",
           "note": "Airlines choose between the GE GEnx-1B and Rolls-Royce Trent 1000."
         },
         "engineThrust": {
           "value": 320,
-          "source": "skybrary-b789",
-          "status": "unverified",
-          "note": "SKYbrary gives 320 kN for both engine options. Lufthansa quotes 74,400 lbf (≈ 331 kN). The exact rating depends on the engine sub-model."
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "71,000 lbf (320 kN)."
         },
         "cruiseSpeed": {
           "value": 0.85,
-          "source": "skybrary-b789",
-          "status": "unverified"
+          "source": "wikipedia-787",
+          "status": "verified"
         }
       }
     },
@@ -211,54 +170,55 @@
       "specs": {
         "wingspan": {
           "value": 64.75,
-          "source": "lufthansa-a350-facts",
-          "status": "unverified",
-          "note": "SKYbrary also gives 64.75 m."
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "64.75 m (212 ft 5 in)."
         },
         "wingArea": {
-          "value": 443,
-          "source": "lufthansa-a350-facts",
-          "status": "unverified",
-          "note": "Airline fact sheet, not an Airbus document."
+          "value": 442,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "442 m² (aspect ratio 9.49 in the same table)."
         },
         "length": {
           "value": 66.8,
-          "source": "skybrary-a359",
-          "status": "unverified"
+          "source": "wikipedia-a350",
+          "status": "verified"
         },
         "mtow": {
           "value": 283000,
-          "source": "airbus-a350-facts-2024",
-          "status": "unverified",
-          "note": "283 t, the highest current weight variant. SKYbrary and Lufthansa list 268 t, an earlier variant."
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "283 t with Trent XWB-84 engines."
         },
         "typicalRange": {
-          "value": 8300,
-          "source": "airbus-a350-facts-2024",
-          "status": "unverified",
-          "note": "8,300 nmi (15,400 km) at 283 t. The older figure was 8,100 nmi (15,000 km)."
+          "value": 8500,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "8,500 nmi (15,750 km) with 325 passengers."
         },
         "typicalSeats": {
           "value": 325,
-          "source": "airbus-a350-facts-2024",
-          "status": "unverified",
-          "note": "Airbus publishes a range of 300–350 seats (three-class). 325 is the midpoint, calculated by us so it can be charted."
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "Wikipedia's typical figure. It also gives a range of 300–350 seats."
         },
         "engineModel": {
           "value": "Trent XWB-84",
-          "source": "skybrary-a359",
-          "status": "unverified"
+          "source": "wikipedia-a350",
+          "status": "verified"
         },
         "engineThrust": {
-          "value": 374,
-          "source": "skybrary-a359",
-          "status": "unverified",
-          "note": "Often quoted as 84,200 lbf."
+          "value": 375,
+          "source": "wikipedia-trent-xwb",
+          "status": "verified",
+          "note": "84,200 lbf (375 kN) net takeoff rating."
         },
         "cruiseSpeed": {
           "value": 0.85,
-          "source": "skybrary-a359",
-          "status": "unverified"
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "The wing is designed for a Mach 0.85 cruise."
         }
       }
     }
