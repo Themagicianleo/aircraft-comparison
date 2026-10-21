@@ -37,6 +37,66 @@
       "publisher": "Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Rolls-Royce_Trent_XWB",
       "accessed": "2026-10-21"
+    },
+    "wikipedia-a320neo": {
+      "title": "Airbus A320neo family (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A320neo_family#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-a321neo": {
+      "title": "Airbus A321neo",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A321neo",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-737max": {
+      "title": "Boeing 737 MAX (Specifications section, MAX 8)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Boeing_737_MAX#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-737ng": {
+      "title": "Boeing 737 Next Generation (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Boeing_737_Next_Generation#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-a220": {
+      "title": "Airbus A220 (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A220#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-a330neo": {
+      "title": "Airbus A330neo (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A330neo#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-a330mrtt": {
+      "title": "Airbus A330 MRTT (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A330_MRTT#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-a380": {
+      "title": "Airbus A380 (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Airbus_A380#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-747-8": {
+      "title": "Boeing 747-8 (Specifications section)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Boeing_747-8#Specifications",
+      "accessed": "2026-10-21"
+    },
+    "wikipedia-genx": {
+      "title": "General Electric GEnx (Specifications, GEnx-2B67)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/General_Electric_GEnx",
+      "accessed": "2026-10-21"
     }
   },
 
@@ -219,6 +279,555 @@
           "source": "wikipedia-a350",
           "status": "verified",
           "note": "The wing is designed for a Mach 0.85 cruise."
+        }
+      }
+    },
+
+    {
+      "id": "a220-300",
+      "name": "Airbus A220-300",
+      "manufacturer": "Airbus",
+      "specs": {
+        "wingspan": {
+          "value": 35.1,
+          "source": "wikipedia-a220",
+          "status": "unverified",
+          "note": "35.1 m (115 ft 2 in). The table cell is shared by both A220 versions, so it's not 100% clear it applies to the -300."
+        },
+        "wingArea": {
+          "value": 112.3,
+          "source": "wikipedia-a220",
+          "status": "verified",
+          "note": "112.3 m² (1,209 sq ft), the same wing for both A220 versions."
+        },
+        "length": {
+          "value": 38.71,
+          "source": "wikipedia-a220",
+          "status": "verified",
+          "note": "38.71 m (127 ft)."
+        },
+        "mtow": {
+          "value": 70900,
+          "source": "wikipedia-a220",
+          "status": "verified",
+          "note": "70.9 t (156,000 lb), the higher weight offered from March 2021."
+        },
+        "typicalRange": {
+          "value": 3400,
+          "source": "wikipedia-a220",
+          "status": "unverified",
+          "note": "3,400 nmi (6,300 km) in the spec table. Other parts of the article give 3,550 or 3,600 nmi after the weight increase."
+        },
+        "typicalSeats": {
+          "value": 135,
+          "source": "wikipedia-a220",
+          "status": "unverified",
+          "note": "Wikipedia gives 120–150 seats in a typical two-class layout. 135 is the midpoint, calculated by us so it can be charted."
+        },
+        "engineModel": {
+          "value": "PW1500G",
+          "source": "wikipedia-a220",
+          "status": "verified",
+          "note": "Pratt & Whitney PW1500G family (e.g. PW1524G-3)."
+        },
+        "engineThrust": {
+          "value": 108.5,
+          "source": "wikipedia-a220",
+          "status": "verified",
+          "note": "PW1524G-3: 108.5 kN (24,400 lbf). The lower-rated PW1521G-3 gives 98 kN."
+        },
+        "cruiseSpeed": {
+          "value": 0.78,
+          "source": "wikipedia-a220",
+          "status": "unverified",
+          "note": "Typical cruise Mach 0.78 (maximum Mach 0.82). Like the wingspan, this cell is shared by both versions."
+        }
+      }
+    },
+
+    {
+      "id": "a320neo",
+      "name": "Airbus A320neo",
+      "manufacturer": "Airbus",
+      "specs": {
+        "wingspan": {
+          "value": 35.8,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "35.80 m (117 ft 5 in), the same for the whole A320neo family."
+        },
+        "wingArea": {
+          "value": 122.4,
+          "source": "wikipedia-a321neo",
+          "status": "unverified",
+          "note": "122.4 m² (1,318 sq ft) is the A321neo page's figure for the family wing. Wikipedia's A320neo table doesn't list an area, so this assumes the A320neo has the same wing."
+        },
+        "length": {
+          "value": 37.57,
+          "source": "wikipedia-a320neo",
+          "status": "verified"
+        },
+        "mtow": {
+          "value": 79000,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "79.0 t."
+        },
+        "typicalRange": {
+          "value": 3400,
+          "source": "wikipedia-a320neo",
+          "status": "unverified",
+          "note": "3,400 nmi (6,300 km) in one Wikipedia table; another part gives 6,500 km (≈ 3,500 nmi)."
+        },
+        "typicalSeats": {
+          "value": 165,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "Typical two-class layout."
+        },
+        "engineModel": {
+          "value": "LEAP-1A or PW1100G",
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "Airlines choose between the CFM LEAP-1A and the Pratt & Whitney PW1100G."
+        },
+        "engineThrust": {
+          "value": 120.6,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "120.6 kN (27,120 lbf)."
+        },
+        "cruiseSpeed": {
+          "value": 0.78,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "Cruise Mach 0.78 (maximum Mach 0.82)."
+        }
+      }
+    },
+
+    {
+      "id": "a321neo",
+      "name": "Airbus A321neo",
+      "manufacturer": "Airbus",
+      "specs": {
+        "wingspan": {
+          "value": 35.8,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "35.80 m (117 ft 5 in), the same for the whole A320neo family."
+        },
+        "wingArea": {
+          "value": 122.4,
+          "source": "wikipedia-a321neo",
+          "status": "unverified",
+          "note": "122.4 m² (1,318 sq ft) on the A321neo page. The older A321 page gives 128 m², so the two Wikipedia pages disagree."
+        },
+        "length": {
+          "value": 44.51,
+          "source": "wikipedia-a320neo",
+          "status": "verified"
+        },
+        "mtow": {
+          "value": 93500,
+          "source": "wikipedia-a321neo",
+          "status": "verified",
+          "note": "93.5 t for the standard A321neo. The long-range versions are heavier: A321LR 97 t, A321XLR 101 t."
+        },
+        "typicalRange": {
+          "value": 3500,
+          "source": "wikipedia-a321neo",
+          "status": "verified",
+          "note": "3,500 nmi for the standard version (A321LR ≈ 4,000 nmi, A321XLR ≈ 4,700 nmi)."
+        },
+        "typicalSeats": {
+          "value": 206,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "Typical two-class layout (180–220 range)."
+        },
+        "engineModel": {
+          "value": "LEAP-1A or PW1100G",
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "Airlines choose between the CFM LEAP-1A and the Pratt & Whitney PW1100G."
+        },
+        "engineThrust": {
+          "value": 147.3,
+          "source": "wikipedia-a320neo",
+          "status": "verified",
+          "note": "147.3 kN (33,110 lbf)."
+        },
+        "cruiseSpeed": {
+          "value": 0.78,
+          "source": "wikipedia-a320neo",
+          "status": "unverified",
+          "note": "Mach 0.78 is the A320neo family figure; Wikipedia doesn't list one for the A321neo specifically."
+        }
+      }
+    },
+
+    {
+      "id": "b737-max-8",
+      "name": "Boeing 737 MAX 8",
+      "manufacturer": "Boeing",
+      "specs": {
+        "wingspan": {
+          "value": 35.92,
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "117 ft 10 in (35.92 m), including the winglets."
+        },
+        "wingArea": {
+          "value": 124.6,
+          "source": "wikipedia-737ng",
+          "status": "unverified",
+          "note": "124.6 m² (1,341.2 sq ft) is Wikipedia's figure for the 737-800, which has the same basic wing. The 737 MAX article doesn't list a wing area."
+        },
+        "length": {
+          "value": 39.52,
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "129 ft 8 in (39.52 m)."
+        },
+        "mtow": {
+          "value": 82644,
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "182,200 lb (82,644 kg)."
+        },
+        "typicalRange": {
+          "value": 3500,
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "3,500 nmi (6,500 km). One table gives 3,515 nmi."
+        },
+        "typicalSeats": {
+          "value": 178,
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "Typical two-class layout (12 business + 166 economy)."
+        },
+        "engineModel": {
+          "value": "LEAP-1B28",
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "CFM LEAP-1B."
+        },
+        "engineThrust": {
+          "value": 127.6,
+          "source": "wikipedia-737max",
+          "status": "verified",
+          "note": "28,690 lbf (≈ 127.6 kN)."
+        },
+        "cruiseSpeed": {
+          "value": null,
+          "source": "wikipedia-737max",
+          "status": "unverified",
+          "note": "No cruise Mach figure found on Wikipedia's 737 MAX page, so this is left blank rather than guessed."
+        }
+      }
+    },
+
+    {
+      "id": "a330-900",
+      "name": "Airbus A330-900",
+      "manufacturer": "Airbus",
+      "specs": {
+        "wingspan": {
+          "value": 64.0,
+          "source": "wikipedia-a330neo",
+          "status": "verified",
+          "note": "64.0 m (210 ft), with the new, longer wingtips."
+        },
+        "wingArea": {
+          "value": 372,
+          "source": "wikipedia-a330mrtt",
+          "status": "unverified",
+          "note": "372 m² (4,000 sq ft), from a comparison table in the A330 MRTT article for the 64 m-span wing. The A330neo article itself doesn't give it, and other numbers circulate online."
+        },
+        "length": {
+          "value": 63.66,
+          "source": "wikipedia-a330neo",
+          "status": "verified",
+          "note": "63.66 m, the same fuselage as the A330-300."
+        },
+        "mtow": {
+          "value": 251000,
+          "source": "wikipedia-a330neo",
+          "status": "verified",
+          "note": "251 t, certified in 2020 (the original weight was 242 t)."
+        },
+        "typicalRange": {
+          "value": 7350,
+          "source": "wikipedia-a330neo",
+          "status": "unverified",
+          "note": "7,350 nmi with 287 passengers; another part of the article says 7,200 nmi at 251 t."
+        },
+        "typicalSeats": {
+          "value": 287,
+          "source": "wikipedia-a330neo",
+          "status": "verified",
+          "note": "Typical two-class layout."
+        },
+        "engineModel": {
+          "value": "Trent 7000",
+          "source": "wikipedia-a330neo",
+          "status": "verified"
+        },
+        "engineThrust": {
+          "value": 320,
+          "source": "wikipedia-a330neo",
+          "status": "verified",
+          "note": "Up to 72,000 lbf (320 kN); lower-rated versions give 68,000 lbf (300 kN)."
+        },
+        "cruiseSpeed": {
+          "value": 0.82,
+          "source": "wikipedia-a330neo",
+          "status": "unverified",
+          "note": "Mach 0.82 is the A330 family cruise figure, not one given specifically for the -900."
+        }
+      }
+    },
+
+    {
+      "id": "b787-10",
+      "name": "Boeing 787-10",
+      "manufacturer": "Boeing",
+      "specs": {
+        "wingspan": {
+          "value": 60.12,
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "Same wingspan as the 787-9 (60.1 m in a comparison table)."
+        },
+        "wingArea": {
+          "value": 377,
+          "source": "wikipedia-787",
+          "status": "unverified",
+          "note": "Assumed to be the same wing as the 787-9 (377 m²), since the span is the same. Wikipedia doesn't list it separately."
+        },
+        "length": {
+          "value": 68.28,
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "224 ft (68.28 m), the longest 787."
+        },
+        "mtow": {
+          "value": 254011,
+          "source": "wikipedia-787",
+          "status": "unverified",
+          "note": "560,000 lb (254,011 kg) in the spec section. The FAA approved a higher weight in March 2026, and a comparison table gives 260.4 t."
+        },
+        "typicalRange": {
+          "value": 6330,
+          "source": "wikipedia-787",
+          "status": "unverified",
+          "note": "6,330 nmi (11,720 km) in the article text; a comparison table says up to 7,500 nmi."
+        },
+        "typicalSeats": {
+          "value": 336,
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "Typical two-class layout."
+        },
+        "engineModel": {
+          "value": "GEnx-1B or Trent 1000",
+          "source": "wikipedia-787",
+          "status": "verified"
+        },
+        "engineThrust": {
+          "value": 340,
+          "source": "wikipedia-787",
+          "status": "verified",
+          "note": "76,000 lbf (340 kN)."
+        },
+        "cruiseSpeed": {
+          "value": 0.85,
+          "source": "wikipedia-787",
+          "status": "verified"
+        }
+      }
+    },
+
+    {
+      "id": "a350-1000",
+      "name": "Airbus A350-1000",
+      "manufacturer": "Airbus",
+      "specs": {
+        "wingspan": {
+          "value": 64.75,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "Same span as the A350-900."
+        },
+        "wingArea": {
+          "value": 464.3,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "464.3 m² (4,998 sq ft): bigger than the -900's because of a trailing-edge extension."
+        },
+        "length": {
+          "value": 73.79,
+          "source": "wikipedia-a350",
+          "status": "verified"
+        },
+        "mtow": {
+          "value": 322000,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "322 t (710,000 lb), raised in October 2023."
+        },
+        "typicalRange": {
+          "value": 9000,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "9,000 nmi (16,700 km)."
+        },
+        "typicalSeats": {
+          "value": 369,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "Typical two-class layout."
+        },
+        "engineModel": {
+          "value": "Trent XWB-97",
+          "source": "wikipedia-a350",
+          "status": "verified"
+        },
+        "engineThrust": {
+          "value": 430,
+          "source": "wikipedia-trent-xwb",
+          "status": "verified",
+          "note": "97,000 lbf (430 kN)."
+        },
+        "cruiseSpeed": {
+          "value": 0.85,
+          "source": "wikipedia-a350",
+          "status": "verified",
+          "note": "The A350 family wing is designed for Mach 0.85."
+        }
+      }
+    },
+
+    {
+      "id": "a380-800",
+      "name": "Airbus A380-800",
+      "manufacturer": "Airbus",
+      "specs": {
+        "wingspan": {
+          "value": 79.75,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "79.75 m (261 ft 8 in), kept just under the 80 m airport limit."
+        },
+        "wingArea": {
+          "value": 845,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "845 m² (9,100 sq ft)."
+        },
+        "length": {
+          "value": 72.72,
+          "source": "wikipedia-a380",
+          "status": "verified"
+        },
+        "mtow": {
+          "value": 575000,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "575 t in the spec table. Other variants were 560 t and 569 t."
+        },
+        "typicalRange": {
+          "value": 7991,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "14,800 km (7,991 nmi) in the spec table."
+        },
+        "typicalSeats": {
+          "value": 525,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "Typical figure. Real airline layouts range from 379 to 615 seats."
+        },
+        "engineModel": {
+          "value": "Trent 900 or GP7200",
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "Rolls-Royce Trent 900 or Engine Alliance GP7200, four engines."
+        },
+        "engineThrust": {
+          "value": 334,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "Trent 970: 334 kN (75,152 lbf). The GP7270 gives 332 kN."
+        },
+        "cruiseSpeed": {
+          "value": 0.85,
+          "source": "wikipedia-a380",
+          "status": "verified",
+          "note": "Typical cruise Mach 0.85 (maximum Mach 0.89)."
+        }
+      }
+    },
+
+    {
+      "id": "b747-8",
+      "name": "Boeing 747-8",
+      "manufacturer": "Boeing",
+      "specs": {
+        "wingspan": {
+          "value": 68.4,
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "224 ft 5 in (68.40 m)."
+        },
+        "wingArea": {
+          "value": 554,
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "5,960 sq ft (554 m²)."
+        },
+        "length": {
+          "value": 76.25,
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "250 ft 2 in (76.25 m), the longest airliner listed here."
+        },
+        "mtow": {
+          "value": 447696,
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "987,000 lb (447,696 kg) in the spec table; the article text also mentions 975,000 lb."
+        },
+        "typicalRange": {
+          "value": 7730,
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "7,730 nmi (14,320 km) in the spec table; other parts mention 7,790–8,000 nmi."
+        },
+        "typicalSeats": {
+          "value": 467,
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "Typical three-class layout."
+        },
+        "engineModel": {
+          "value": "GEnx-2B67",
+          "source": "wikipedia-747-8",
+          "status": "verified",
+          "note": "Four engines."
+        },
+        "engineThrust": {
+          "value": 296,
+          "source": "wikipedia-genx",
+          "status": "verified",
+          "note": "66,500 lbf (≈ 296 kN). Wikipedia rounds this to 300 kN."
+        },
+        "cruiseSpeed": {
+          "value": 0.855,
+          "source": "wikipedia-747-8",
+          "status": "verified"
         }
       }
     }
