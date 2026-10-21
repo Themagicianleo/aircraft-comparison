@@ -252,3 +252,23 @@ figcaption {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
+
+/* "What does this mean?" box under each metric */
+.explain {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.explain h4 {
+  margin: 0 0 4px;
+}
+
+.explain p {
+  margin: 0 0 8px;
+  max-width: 70ch; /* keep lines short enough to read comfortably */
+}
+
+.comparison {
+  font-weight: 600;
+}

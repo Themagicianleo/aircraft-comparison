@@ -226,6 +226,13 @@ const METRICS = [
     working: (s, result) =>
       `${formatNumber(s.wingspan.value, 2)}² ÷ ${formatNumber(s.wingArea.value, 1)} = ${formatNumber(result, 2)}`,
     format: (result) => formatNumber(result, 2) + ' (no unit)',
+    // Feature 4: the plain-language explanation shown under the results
+    higherMeans: 'a longer, slimmer wing',
+    explanation: [
+      'Aspect ratio describes how long and slim a wing is. Picture two wings with the same area: one long and narrow, one short and wide. The long, narrow one has the higher aspect ratio. It has no unit because it is m² divided by m².',
+      'Air swirls around each wingtip and creates drag (called induced drag). A long, slim wing loses less energy this way, so it is more efficient in cruise. That is why gliders have very long, thin wings.',
+      'The catch: long wings are heavier to make strong enough, and they still have to fit at airport gates. Small differences (a few tenths) between airliners matter less than engine and weight differences.',
+    ],
   },
   {
     name: 'Wing loading (at MTOW)',
@@ -235,6 +242,12 @@ const METRICS = [
     working: (s, result) =>
       `${formatNumber(s.mtow.value)} kg ÷ ${formatNumber(s.wingArea.value, 1)} m² = ${formatNumber(result)} kg/m²`,
     format: (result) => `${formatNumber(result)} kg/m² (${formatNumber(result * KG_M2_TO_LB_FT2)} lb/ft²)`,
+    higherMeans: 'more weight resting on each square metre of wing',
+    explanation: [
+      'Wing loading is how many kilograms each square metre of wing has to hold up. Here we use the heaviest allowed takeoff weight (MTOW).',
+      'A wing makes more lift the faster it moves, so a plane with higher wing loading generally has to fly faster to take off and land. Flaps and slats help by making the wing bigger and more curved at low speed.',
+      'Higher wing loading also gives a smoother ride in turbulence, because a gust changes the lift by a smaller share of the plane\'s weight. In real flight the plane gets lighter as it burns fuel, so its actual wing loading drops during the trip.',
+    ],
   },
 ];
 
@@ -278,6 +291,22 @@ function buildMetricResult(metric, plane, sideClass) {
   return box;
 }
 
+// Writes a sentence such as "The Boeing 787-9's value is 4% higher than the
+// Boeing 777-300ER's: a longer, slimmer wing." Returns null if it can't be calculated.
+function compareSentence(metric, planeA, planeB) {
+  const hasAll = (plane) => metric.inputs.every((key) => plane.specs[key].value !== null);
+  if (!hasAll(planeA) || !hasAll(planeB)) return null;
+  if (planeA.id === planeB.id) return 'You picked the same aircraft twice, so the values are identical.';
+
+  const a = metric.calculate(planeA.specs);
+  const b = metric.calculate(planeB.specs);
+  // Sort so "higher" is the bigger one
+  const [high, low, highValue, lowValue] = a >= b ? [planeA, planeB, a, b] : [planeB, planeA, b, a];
+  const percent = ((highValue - lowValue) / lowValue) * 100; // how much bigger, in percent
+  if (percent < 0.5) return `${planeA.name} and ${planeB.name} are practically the same here.`;
+  return `The ${high.name}'s value is ${formatNumber(percent)}% higher than the ${low.name}'s, meaning ${metric.higherMeans}.`;
+}
+
 // Rebuilds all the metric cards for the two chosen aircraft.
 function renderMetrics(planeA, planeB) {
   const container = document.getElementById('metrics');
@@ -302,6 +331,30 @@ function renderMetrics(planeA, planeB) {
     results.appendChild(buildMetricResult(metric, planeA, 'side-a'));
     results.appendChild(buildMetricResult(metric, planeB, 'side-b'));
     card.appendChild(results);
+
+    // Feature 4: "what does this mean?" box
+    const explain = document.createElement('div');
+    explain.className = 'explain';
+    const heading = document.createElement('h4');
+    heading.textContent = 'What does this mean?';
+    explain.appendChild(heading);
+
+    // One sentence about the two aircraft that are actually selected
+    const comparison = compareSentence(metric, planeA, planeB);
+    if (comparison) {
+      const p = document.createElement('p');
+      p.className = 'comparison';
+      p.textContent = comparison;
+      explain.appendChild(p);
+    }
+
+    // The general explanation paragraphs
+    for (const text of metric.explanation) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      explain.appendChild(p);
+    }
+    card.appendChild(explain);
 
     container.appendChild(card);
   }
