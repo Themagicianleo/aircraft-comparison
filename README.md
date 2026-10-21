@@ -54,9 +54,9 @@ Then open <http://localhost:8000> in your browser. The charts need an internet c
 ```json
 "wingspan": {
   "value": 64.8,
-  "source": "boeing-777x-acaps",
+  "source": "skybrary-b77w",
   "status": "unverified",
-  "note": "Boeing lists 212.8 ft (64.8 m). SKYbrary also gives 64.80 m."
+  "note": "SKYbrary gives 64.80 m. Check against Boeing's 777-300ER airport planning document."
 }
 ```
 
@@ -84,7 +84,7 @@ Conversions use exact definitions: 1 ft = 0.3048 m, 1 lb = 0.45359237 kg, 1 nmi 
 
 Each value's exact source is in `data.json`. Overall:
 
-- **Boeing:** 777/777X airport compatibility (airport planning) documents and the 787 product page
+- **Boeing:** 777-200LR/-300ER/-Freighter *Airplane Characteristics for Airport Planning* (Rev G, Dec 2024) and the 787 product page
 - **Airbus:** *A350 Family Facts and Figures* (October 2024)
 - **SKYbrary** (EUROCONTROL / Flight Safety Foundation) aircraft performance pages for the B77W, B789 and A359
 - **Airlines:** Lufthansa Group A350 fact sheet, Qantas 787-9 fleet page
@@ -115,3 +115,4 @@ Where to look first, from most to least uncertain:
 - **Only one engine option is charted per aircraft.** The 787-9 offers both the GEnx-1B and Trent 1000, and their thrust ratings differ slightly.
 - **Only two aircraft can be compared at a time.**
 - **Charts need internet access**, because Chart.js is loaded from a CDN.
+- **Source links can break.** Websites move their files (Boeing reorganised boeing.com, which broke two of the original links). Each value's "details" box shows the full document name, so you can find it by searching even if the link stops working. Boeing's current airport planning documents are listed at <https://www.boeing.com/commercial/airports/plan-manuals>.

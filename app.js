@@ -67,7 +67,7 @@ function buildSpecCell(spec, unit) {
   valueEl.textContent = formatValue(spec.value, unit);
   cell.appendChild(valueEl);
 
-  // A small line underneath: "⚠ unverified · source"
+  // A small line underneath: "⚠ unverified · source: SKYbrary"
   const meta = document.createElement('div');
   meta.className = 'meta';
   if (spec.status !== 'verified') {
@@ -78,24 +78,33 @@ function buildSpecCell(spec, unit) {
     meta.appendChild(document.createTextNode(' · '));
   }
   const source = data.sources[spec.source];
+  // Short publisher name for the link, e.g. "SKYbrary (EUROCONTROL / ...)" -> "SKYbrary"
+  const shortPublisher = source.publisher.split(' (')[0];
   const link = document.createElement('a');
   link.href = source.url;
   link.target = '_blank';           // open in a new tab
   link.rel = 'noopener';            // standard safety setting for new-tab links
-  link.textContent = 'source';
+  link.textContent = `source: ${shortPublisher}`;
   link.title = `${source.publisher}: ${source.title}`; // shown when you hover
   meta.appendChild(link);
   cell.appendChild(meta);
 
-  // The note (if any) goes in a <details> box: tap to open, so it works on phones too
+  // A "details" box (tap to open, so it works on phones too) with the note, if any,
+  // plus the full name of the source. If a website moves its page and the link breaks,
+  // you can still find the document by searching for this name.
+  const details = document.createElement('details');
+  const summary = document.createElement('summary');
+  summary.textContent = 'details';
+  details.appendChild(summary);
   if (spec.note) {
-    const details = document.createElement('details');
-    const summary = document.createElement('summary');
-    summary.textContent = 'note';
-    details.appendChild(summary);
-    details.appendChild(document.createTextNode(spec.note));
-    cell.appendChild(details);
+    const note = document.createElement('p');
+    note.textContent = spec.note;
+    details.appendChild(note);
   }
+  const sourceName = document.createElement('p');
+  sourceName.textContent = `Source: ${source.title} (${source.publisher}), accessed ${source.accessed}.`;
+  details.appendChild(sourceName);
+  cell.appendChild(details);
 
   return cell;
 }

@@ -322,3 +322,8 @@ figcaption {
   width: 100%;
   min-width: 0;
 }
+
+/* Paragraphs inside the "details" box in the specs table */
+details p {
+  margin: 4px 0;
+}

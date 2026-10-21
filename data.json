@@ -20,16 +20,10 @@
       "url": "https://skybrary.aero/aircraft/b77w",
       "accessed": "2026-10-21"
     },
-    "boeing-777x-acaps": {
-      "title": "777X Airport Compatibility Brochure (compares 777-300ER)",
-      "publisher": "Boeing",
-      "url": "https://www.boeing.com/resources/boeingdotcom/commercial/airports/acaps/777Xbrochure.pdf",
-      "accessed": "2026-10-21"
-    },
     "boeing-777-acaps": {
-      "title": "777-200LR / -300ER / -Freighter Airplane Characteristics for Airport Planning",
+      "title": "777-200LR / -300ER / -Freighter Airplane Characteristics for Airport Planning (D6-58329-2, Rev G, Dec 2024)",
       "publisher": "Boeing",
-      "url": "https://www.boeing.com/resources/boeingdotcom/commercial/airports/acaps/777_2lr_3er_f.pdf",
+      "url": "https://www.boeing.com/content/dam/boeing/v2/airports/acaps/777-200LR-300ER-F_Rev_G.pdf",
       "accessed": "2026-10-21"
     },
     "flightglobal-777-mtow": {
@@ -96,9 +90,9 @@
       "specs": {
         "wingspan": {
           "value": 64.8,
-          "source": "boeing-777x-acaps",
+          "source": "skybrary-b77w",
           "status": "unverified",
-          "note": "Boeing lists 212.8 ft (64.8 m). SKYbrary also gives 64.80 m."
+          "note": "SKYbrary gives 64.80 m. A Boeing 777X brochure lists the 777-300ER at 212.8 ft (64.8 m), but that PDF has since been removed from boeing.com. Check against Boeing's 777-300ER airport planning document (Rev G)."
         },
         "wingArea": {
           "value": 436.8,
