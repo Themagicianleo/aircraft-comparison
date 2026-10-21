@@ -4,6 +4,8 @@ A small web app for comparing two commercial airliners side by side: their speci
 
 Built with plain HTML, CSS and JavaScript, and [Chart.js](https://www.chartjs.org/) for the charts. There is no framework, build step or backend, so it can be hosted for free on GitHub Pages.
 
+**Live site:** <https://themagicianleo.github.io/aircraft-comparison/>
+
 Aircraft included so far: **Boeing 777-300ER**, **Boeing 787-9**, **Airbus A350-900**.
 
 ## Features
@@ -21,7 +23,7 @@ Aircraft included so far: **Boeing 777-300ER**, **Boeing 787-9**, **Airbus A350-
 The page loads `data.json` with `fetch()`. Browsers block that when you open `index.html` by double-clicking it (a `file://` address), so run a small local web server instead:
 
 ```bash
-cd airliner-comparison
+cd aircraft-comparison
 python3 -m http.server 8000
 ```
 
