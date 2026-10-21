@@ -48,8 +48,34 @@
         </table>
       </div>
     </section>
+
+    <!-- Feature 2: four bar charts. Each <canvas> is a drawing area that Chart.js paints on. -->
+    <section aria-labelledby="charts-heading">
+      <h2 id="charts-heading">Charts</h2>
+      <p class="hint">Hover or tap a bar to see its exact value. All four charts start at zero, so bar lengths are fair to compare.</p>
+      <div class="charts">
+        <figure class="chart-card">
+          <figcaption>Wingspan (m)</figcaption>
+          <div class="chart-box"><canvas id="chart-wingspan"></canvas></div>
+        </figure>
+        <figure class="chart-card">
+          <figcaption>Typical range (nmi)</figcaption>
+          <div class="chart-box"><canvas id="chart-typicalRange"></canvas></div>
+        </figure>
+        <figure class="chart-card">
+          <figcaption>Max takeoff weight (tonnes)</figcaption>
+          <div class="chart-box"><canvas id="chart-mtow"></canvas></div>
+        </figure>
+        <figure class="chart-card">
+          <figcaption>Typical seats</figcaption>
+          <div class="chart-box"><canvas id="chart-typicalSeats"></canvas></div>
+        </figure>
+      </div>
+    </section>
   </main>
 
+  <!-- Chart.js from a CDN, pinned to an exact version so it never changes under us -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <!-- Our own code. "defer" means: run it after the HTML above has been read. -->
   <script src="app.js" defer></script>
 </body>

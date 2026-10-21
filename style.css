@@ -173,3 +173,29 @@ details {
 summary {
   cursor: pointer;
 }
+
+/* ---------- Charts ---------- */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two charts per row (phones get one per row in feature 5) */
+  gap: 16px;
+}
+
+.chart-card {
+  margin: 0;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+figcaption {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Chart.js fills this box, so its height sets the chart height */
+.chart-box {
+  position: relative;
+  height: 220px;
+}

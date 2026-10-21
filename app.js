@@ -122,13 +122,101 @@ function renderTable(planeA, planeB) {
   }
 }
 
-// ---------- 4. Wiring it together ----------
+// ---------- 4. Bar charts (Chart.js) ----------
+
+// Which fields get a chart. "scale" converts the stored value for the chart,
+// e.g. MTOW is stored in kg but charted in tonnes so the axis numbers stay short.
+const CHARTS = [
+  { field: 'wingspan',     scale: 1,        unit: 'm' },
+  { field: 'typicalRange', scale: 1,        unit: 'nmi' },
+  { field: 'mtow',         scale: 1 / 1000, unit: 't' },
+  { field: 'typicalSeats', scale: 1,        unit: 'seats' },
+];
+
+// The Chart.js objects, kept so we can update them instead of rebuilding them.
+const charts = {};
+
+// Reads a colour token from style.css (e.g. "--series-a") so the charts match the page,
+// including dark mode.
+function cssColor(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// Draws (first time) or updates (every time after) the four bar charts.
+function renderCharts(planeA, planeB) {
+  // If Chart.js didn't load (e.g. no internet), skip charts but keep the rest of the page working.
+  if (typeof Chart === 'undefined') {
+    showError('Charts could not load (Chart.js is fetched from the internet). The table still works.');
+    return;
+  }
+
+  for (const chartInfo of CHARTS) {
+    const key = chartInfo.field;
+    // The two bar heights. A missing value (null) becomes a gap rather than a fake zero.
+    const values = [planeA, planeB].map((plane) => {
+      const v = plane.specs[key].value;
+      return v === null ? null : v * chartInfo.scale;
+    });
+    const labels = [planeA.name, planeB.name];
+
+    if (charts[key]) {
+      // Chart already exists: just swap in the new numbers and redraw
+      charts[key].data.labels = labels;
+      charts[key].data.datasets[0].data = values;
+      charts[key].update();
+      continue;
+    }
+
+    // First time: create the chart
+    charts[key] = new Chart(document.getElementById(`chart-${key}`), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: values,
+          // Bar 1 is always Aircraft A (blue), bar 2 always Aircraft B (orange),
+          // matching the coloured edges on the dropdowns
+          backgroundColor: [cssColor('--series-a'), cssColor('--series-b')],
+          borderRadius: 4,       // slightly rounded bar tops
+          maxBarThickness: 56,   // stops bars getting huge on wide screens
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, // let the CSS box decide the height
+        plugins: {
+          legend: { display: false }, // the bar labels already name each aircraft
+          tooltip: {
+            callbacks: {
+              // Tooltip text, e.g. "351.5 t"
+              label: (ctx) => `${formatNumber(ctx.parsed.y, chartInfo.unit === 't' ? 1 : 0)} ${chartInfo.unit}`,
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: { color: cssColor('--text-muted') },
+            grid: { display: false },
+          },
+          y: {
+            beginAtZero: true, // never cut off the bottom: that would exaggerate differences
+            ticks: { color: cssColor('--text-muted') },
+            grid: { color: cssColor('--border') },
+          },
+        },
+      },
+    });
+  }
+}
+
+// ---------- 5. Wiring it together ----------
 
 // Called whenever either dropdown changes: read both choices, redraw everything.
 function update() {
   const planeA = findAircraft(document.getElementById('select-a').value);
   const planeB = findAircraft(document.getElementById('select-b').value);
   renderTable(planeA, planeB);
+  renderCharts(planeA, planeB);
 }
 
 // Puts one <option> per aircraft into a dropdown and pre-selects one.
